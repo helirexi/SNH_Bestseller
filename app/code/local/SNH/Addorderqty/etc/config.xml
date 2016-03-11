@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SNH_Addorderqty>
+            <version>0.1.0</version>
+        </SNH_Addorderqty>
+    </modules>
+    
+	<global>
+	<models>
+		<addorderqty>
+			<class>SNH_Addorderqty_Model</class>
+			<resourceModel>addorderqty_mysql4</resourceModel>
+		</addorderqty>
+
+		<addorderqty_mysql4>
+			<class>SNH_Addorderqty_Model_Mysql4</class>
+		</addorderqty_mysql4>
+	</models>
+
+	<blocks>
+		<addorderqty>
+			<class>SNH_Addorderqty_Block</class>
+		</addorderqty>
+	</blocks>
+	
+	</global>
+
+</config>
+
