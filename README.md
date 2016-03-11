@@ -13,9 +13,13 @@ A question was asked at stackexchange to develop a method to work around this: h
 - with an optional command to lag limit the sales qty over time (like last month only, or last 60 days)
 - and if someone feels enthusiastic: create a temp table and cronjob to log the results to speed up things (optional optional)
 
+# Usage
+You may need to code your own phtml file - but it then may rely on this model. Example code below:
+`{{block type="addorderqty/bestsellerlist" header="Bestselling products" limit=20 category=76 template="catalog/product/bestsellerlist.phtml"}}`
+
 # References
 Other blogs related to this issue (But solve only for simple products)
-http://inchoo.net/magento/bestseller-products-in-magento/comment-page-2/#comment-431917
-https://blog.amasty.com/how-to-display-bestselling-products-in-magento-source-code/
-https://www.zodiacmedia.co.uk/blog/magento-bestselling-products
-http://magento.stackexchange.com/questions/105698/magento-getting-store-bestsellers-configurable-products-only-from-current-stor
+- http://inchoo.net/magento/bestseller-products-in-magento/comment-page-2/#comment-431917
+- https://blog.amasty.com/how-to-display-bestselling-products-in-magento-source-code/
+- https://www.zodiacmedia.co.uk/blog/magento-bestselling-products
+- http://magento.stackexchange.com/questions/105698/magento-getting-store-bestsellers-configurable-products-only-from-current-stor
