@@ -1,0 +1,35 @@
+<?php
+/**
+ * @package SNH_Bestseller
+*/
+class SNH_Bestseller_Block_Bestsellerlist extends Mage_Catalog_Block_Product_List
+{  	
+	 public function __construct()
+	 {
+        parent::__construct();		
+       
+	   	$limit = 3;
+
+		$date = new Zend_Date();
+		$toDate = $date->setDay(1)->getDate()->get('Y-MM-dd');
+		$fromDate = $date->subMonth(1)->getDate()->get('Y-MM-dd');
+
+	    $storeId = Mage::app()->getStore()->getId();
+        $products = Mage::getResourceModel('reports/product_collection')
+            ->addOrderedQty($fromDate,$toDate,true)
+            ->addAttributeToSelect('*')
+            ->addAttributeToSelect(array('name', 'price', 'small_image'))
+            ->setStoreId($storeId)
+            ->addStoreFilter($storeId)
+            ->setOrder('ordered_qty', 'desc');			
+        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($products);
+        Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($products);
+		Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($products);
+ 
+        $products->setPageSize($limit)->setCurPage(1);  
+
+		die($products->getSelect()); 
+		
+		$this->setProductCollection($products);		
+    }	
+}
